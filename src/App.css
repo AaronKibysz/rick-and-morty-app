@@ -1,72 +1,112 @@
-/* Reset básico */
+/* Global box‑sizing y reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f0f0f0;
-  color: #333;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #7f5af0, #ff5f6d);
+  color: #fff;
+  min-height: 100vh;
 }
 
 /* Contenedor principal */
 .app {
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  margin: 0 auto;       /* Centra horizontalmente */
+  padding: 2rem 1rem;   /* Espacio interior */
 }
 
 /* Título */
 h1 {
   font-size: 2.5rem;
-  color: #2c3e50;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 /* Input de búsqueda */
 input[type="text"] {
-  padding: 0.8rem 1rem;
+  display: block;
+  margin: 0 auto 2rem;  /* Centrado y separación */
+  padding: 1rem 1.5rem;
   width: 100%;
-  max-width: 400px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 1rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  max-width: 500px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1.2rem;
+  outline: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s;
+}
+input[type="text"]:focus {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 }
 
 /* Grilla de personajes */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  /* auto‑fit para que use tantas columnas como quepan */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.5rem;
+  width: 100%;
 }
 
 /* Tarjeta de personaje */
 .card {
-  background-color: white;
-  border-radius: 12px;
-  padding: 1rem;
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
 .card:hover {
-  transform: scale(1.05);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
-
 .card img {
   width: 100%;
-  border-radius: 8px;
-  margin-bottom: 0.5rem;
+  max-width: 160px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  border: 3px solid #fff;
 }
-
 .card h3 {
   margin: 0.5rem 0;
-  font-size: 1.2rem;
-  color: #34495e;
+  font-size: 1.4rem;
 }
-
 .card p {
   margin: 0;
-  font-size: 0.9rem;
-  color: #7f8c8d;
+  font-size: 1rem;
+  color: #dcdcdc;
+}
+
+/* Mensaje de carga / error centrado */
+.loading,
+.error {
+  text-align: center;
+  font-size: 1.1rem;
+}
+.loading { color: #ffbb00; }
+.error   { color: #e74c3c; }
+
+/* Adaptación móvil */
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
+  input[type="text"] {
+    max-width: 100%;
+  }
 }
